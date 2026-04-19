@@ -43,12 +43,25 @@ background:rgba(255,255,255,0.3);
 border-radius:25px;
 backdrop-filter:blur(10px);
 display:none;
+overflow:visible;
+}
+
+/* glowing title */
+.glow{
+color:#ff3d6e;
+text-shadow:0 0 5px #ff4d6d,0 0 10px #ff4d6d,0 0 20px #ff4d6d;
+animation: glowPulse 2s infinite alternate;
+}
+@keyframes glowPulse{
+from{ text-shadow:0 0 5px #ff4d6d; }
+to{ text-shadow:0 0 30px #ff4d6d; }
 }
 
 /* typing */
 #typing{
 line-height:1.8;
-word-wrap:break-word;
+white-space:normal;
+word-break:break-word;
 }
 
 /* polaroid */
@@ -64,10 +77,7 @@ background:white;
 padding:10px 10px 25px;
 border-radius:10px;
 box-shadow:0 10px 25px rgba(0,0,0,0.2);
-transform:rotate(-2deg);
 }
-.polaroid:nth-child(2){transform:rotate(2deg);}
-.polaroid:nth-child(3){transform:rotate(-1deg);}
 .polaroid img{
 width:150px;
 border-radius:5px;
@@ -114,7 +124,7 @@ pointer-events:none;
 
 <div class="container" id="mainContent">
 
-<h1>Happy Birthday Henna ❤️</h1>
+<h1 class="glow">Happy Birthday Henna ❤️</h1>
 
 <button id="letterBtn">Read my letter 💌</button>
 <button id="musicBtn">Pause Music 🎵</button>
@@ -128,7 +138,7 @@ pointer-events:none;
 <div class="polaroid"><img src="photo3.jpeg"></div>
 </div>
 
-<button id="playBtn">Tap this 💌</button>
+<button id="playBtn">Final Surprise 💖</button>
 <div id="secret" style="display:none;">I WILL ALWAYS BE URS ❤️</div>
 
 </div>
@@ -138,32 +148,25 @@ window.onload=function(){
 
 const message = `MY HZU,
 
-I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life, everything about you feels so unreal that sometimes i question that even if ur real or not, your love makes me feel the emotions i never knew existed, ik we both are very short tempered have flaws but the way we always try n make it up n all is obv that we are meant to be together, I promise ill be the best bf now and will act just as how you like, will never give u a chance to complain and be bad at me bs daikho aap ab
+I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life...
 
-I Love you and always will in this life and others as well, if i could get chance to relive life i'd want you to be my gf in every. There is something about you that makes life livable, enjoyable, happy and most importantly makes life look different. I never knew someone could have this much impact on me but for 2 years we've met everything is just better man
+I Love you and always will in this life and others as well...
 
-Im sorry for hurting you whenever i did and i promise ill makeup for everything 
+Im sorry for hurting you whenever i did...
 
 Forever yours,
 Ayandu ❤️`;
 
-/* ✨ FIXED TYPEWRITER (NO ... BUG) */
+/* typewriter */
 function typeWriter(){
 let i=0;
 let el=document.getElementById("typing");
 el.innerHTML="";
-
 function step(){
 if(i < message.length){
-let char = message.charAt(i);
-
-/* handle line breaks */
-if(char === "\n"){
-el.innerHTML += "<br>";
-}else{
-el.innerHTML += char;
-}
-
+let char = message[i];
+if(char === "\n"){ el.innerHTML += "<br>"; }
+else{ el.innerHTML += char; }
 i++;
 setTimeout(step,15);
 }
@@ -182,12 +185,12 @@ bgmusic.play();
 /* letter */
 letterBtn.onclick=typeWriter;
 
-/* secret */
+/* surprise */
 playBtn.onclick=function(){
 secret.style.display="block";
 };
 
-/* music control */
+/* music */
 musicBtn.onclick=function(){
 if(bgmusic.paused){
 bgmusic.play();
@@ -203,7 +206,7 @@ modeBtn.onclick=function(){
 document.body.classList.toggle("dark");
 };
 
-/* hearts */
+/* floating hearts */
 setInterval(()=>{
 let h=document.createElement("div");
 h.innerHTML="💖";
@@ -217,7 +220,7 @@ setTimeout(()=>h.remove(),6000);
 },400);
 
 /* floating text */
-const texts=["I love you 💖","My girl 💕","Forever us 💞","Henna ❤️"];
+const texts=["I love you 💖","My girl 💕","Forever us 💞"];
 setInterval(()=>{
 let t=document.createElement("div");
 t.className="float-text";
@@ -227,6 +230,23 @@ t.style.bottom="-20px";
 document.body.appendChild(t);
 setTimeout(()=>t.remove(),6000);
 },1500);
+
+/* 💖 cursor trail */
+document.addEventListener("mousemove",function(e){
+let heart=document.createElement("div");
+heart.innerHTML="💖";
+heart.style.position="fixed";
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+heart.style.pointerEvents="none";
+heart.style.transition="0.6s";
+document.body.appendChild(heart);
+setTimeout(()=>{
+heart.style.transform="translateY(-20px)";
+heart.style.opacity="0";
+},10);
+setTimeout(()=>heart.remove(),600);
+});
 
 };
 </script>
