@@ -12,7 +12,7 @@ background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffd1dc);
 overflow-x: hidden;
 }
 
-/* 🎁 INTRO */
+
 #intro {
 position: fixed;
 top:0; left:0;
@@ -43,7 +43,7 @@ margin-top:15px;
 100% {transform:translateY(-110vh); opacity:0;}
 }
 
-/* MAIN CONTENT */
+
 .container {
 max-width:850px;
 margin:60px auto;
@@ -101,7 +101,7 @@ margin-top:15px;
 
 <body>
 
-<!-- 🎁 INTRO -->
+
 <div id="intro">
 <h2>Tap to open your birthday surprise 🎁</h2>
 <button id="openBtn">Open 💖</button>
@@ -131,7 +131,7 @@ margin-top:15px;
 
 window.onload = function() {
 
-/* 💌 MESSAGE */
+
 const message = `MY HZU,
 
 I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life, everything about you feels so unreal that sometimes i question that even if ur real or not, your love makes me feel the emotions i never knew existed, ik we both are very short tempered have flaws but the way we always try n make it up n all is obv that we are meant to be together, I promise ill be the best bf now and will act just as how you like, will never give u a chance to complain and be bad at me bs daikho aap ab
@@ -143,7 +143,7 @@ Im sorry for hurting you whenever i did and i promise ill makeup for everything
 Forever yours,
 Ayandu ❤️`;
 
-/* ✨ TYPEWRITER */
+
 function typeWriter() {
 let i = 0;
 let el = document.getElementById("typing");
@@ -159,13 +159,13 @@ setTimeout(step, 18);
 step();
 }
 
-/* 🎁 OPEN BUTTON */
+
 document.getElementById("openBtn").onclick = function() {
 document.getElementById("intro").style.display = "none";
 document.getElementById("mainContent").style.display = "block";
 
 let music = document.getElementById("bgmusic");
-music.volume = 0.5; /* 🔥 50% volume */
+music.volume = 0.2; 
 music.play();
 
 typeWriter();
@@ -176,7 +176,7 @@ document.getElementById("playBtn").onclick = function() {
 document.getElementById("secret").style.display = "block";
 };
 
-/* 💖 FLOATING HEARTS */
+
 setInterval(()=>{
 let heart=document.createElement("div");
 heart.innerHTML="💖";
