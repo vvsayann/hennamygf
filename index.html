@@ -14,13 +14,13 @@ cursor: url('cursor.cur') 16 16, auto;
 transition:0.4s;
 }
 
-/* 🌙 dark mode */
+
 .dark{
 background: linear-gradient(135deg,#1e1e2f,#3a3a5a);
 color:white;
 }
 
-/* intro */
+
 #intro{
 position:fixed;
 top:0;left:0;
@@ -33,7 +33,7 @@ background: linear-gradient(135deg,#ffdde1,#ee9ca7);
 z-index:999;
 }
 
-/* main */
+
 .container{
 max-width:850px;
 margin:60px auto;
@@ -46,21 +46,21 @@ display:none;
 overflow:visible;
 }
 
-/* ✨ glow (beat reactive) */
+
 .glow{
 color:#ff3d6e;
 text-shadow:0 0 10px #ff4d6d;
 transition: text-shadow 0.1s linear;
 }
 
-/* typing */
+
 #typing{
 line-height:1.8;
 word-break:break-word;
 white-space:normal;
 }
 
-/* polaroid */
+
 .gallery{
 display:flex;
 gap:15px;
@@ -82,7 +82,7 @@ width:150px;
 border-radius:5px;
 }
 
-/* buttons */
+
 button{
 margin-top:10px;
 padding:10px 20px;
@@ -93,13 +93,13 @@ border-radius:25px;
 cursor:pointer;
 }
 
-/* hearts */
+
 @keyframes floatUp{
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-110vh);opacity:0;}
 }
 
-/* floating text */
+
 .float-text{
 position:fixed;
 color:#ff4d6d;
@@ -173,21 +173,21 @@ setTimeout(step,15);
 step();
 }
 
-/* 🎁 OPEN */
+
 openBtn.onclick=function(){
 intro.style.display="none";
 mainContent.style.display="block";
 bgmusic.volume=0.2;
 bgmusic.play();
 
-/* start audio context */
+
 audioCtx.resume();
 };
 
-/* 💌 LETTER */
+
 letterBtn.onclick=typeWriter;
 
-/* ❤️ FINAL */
+
 playBtn.onclick=function(){
 secret.style.display="block";
 
@@ -199,7 +199,7 @@ window.location.href = "page2.html";
 },2500); 
 };
 
-/* 🎵 MUSIC */
+
 musicBtn.onclick=function(){
 if(bgmusic.paused){
 bgmusic.play();
@@ -210,12 +210,12 @@ musicBtn.innerText="Play Music 🎵";
 }
 };
 
-/* 🌙 MODE */
+
 modeBtn.onclick=function(){
 document.body.classList.toggle("dark");
 };
 
-/* 💖 FLOAT HEARTS */
+
 setInterval(()=>{
 let h=document.createElement("div");
 h.innerHTML="💖";
@@ -228,7 +228,7 @@ document.body.appendChild(h);
 setTimeout(()=>h.remove(),6000);
 },400);
 
-/* 💬 FLOAT TEXT */
+
 const texts=["I love you 💖","My girl 💕","Forever us 💞","Henna ❤️"];
 setInterval(()=>{
 let t=document.createElement("div");
@@ -240,7 +240,7 @@ document.body.appendChild(t);
 setTimeout(()=>t.remove(),6000);
 },1500);
 
-/* 💗 CURSOR HEART TRAIL */
+
 document.addEventListener("mousemove",function(e){
 let heart=document.createElement("div");
 heart.innerHTML="💖";
@@ -257,7 +257,7 @@ heart.style.opacity="0";
 setTimeout(()=>heart.remove(),600);
 });
 
-/* 🎶 BEAT REACTIVE GLOW */
+
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const source = audioCtx.createMediaElementSource(bgmusic);
 const analyser = audioCtx.createAnalyser();
