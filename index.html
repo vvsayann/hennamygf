@@ -10,6 +10,9 @@ margin: 0;
 font-family: 'Segoe UI', sans-serif;
 background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffd1dc);
 overflow-x: hidden;
+
+/* 🖱️ CUSTOM CURSOR */
+cursor: url('heart.png'), auto;
 }
 
 /* 🎁 INTRO */
@@ -37,13 +40,20 @@ cursor:pointer;
 margin-top:15px;
 }
 
-/* 💖 hearts */
+/* 💖 HEART FLOAT */
 @keyframes floatUp {
 0% {transform:translateY(0); opacity:1;}
 100% {transform:translateY(-110vh); opacity:0;}
 }
 
-/* MAIN */
+/* ✨ SIDE BOX FLOAT */
+@keyframes sideFloat {
+0% {transform: translateY(0);}
+50% {transform: translateY(-10px);}
+100% {transform: translateY(0);}
+}
+
+/* 💗 MAIN */
 .container {
 max-width:850px;
 margin:60px auto;
@@ -96,15 +106,23 @@ margin-top:15px;
 .side-box {
 position: fixed;
 top: 30%;
-width: 160px;
+width: 170px;
 padding: 15px;
 background: rgba(255,255,255,0.6);
 border-radius: 20px;
 backdrop-filter: blur(10px);
-box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+box-shadow: 0 5px 25px rgba(255,77,109,0.3);
 font-size: 14px;
 color: #ff3d6e;
 z-index: 2;
+
+/* animation */
+animation: sideFloat 4s ease-in-out infinite;
+}
+
+/* glow */
+.side-box:hover {
+box-shadow: 0 0 25px rgba(255,77,109,0.8);
 }
 
 .left-box { left: 10px; }
@@ -163,11 +181,16 @@ window.onload = function() {
 
 const message = `MY HZU,
 
-I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life...
+I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life, everything about you feels so unreal that sometimes i question that even if ur real or not, your love makes me feel the emotions i never knew existed, ik we both are very short tempered have flaws but the way we always try n make it up n all is obv that we are meant to be together, I promise ill be the best bf now and will act just as how you like, will never give u a chance to complain and be bad at me bs daikho aap ab
+
+I Love you and always will in this life and others as well, if i could get chance to relive life i'd want you to be my gf in every. There is something about you that makes life livable, enjoyable, happy and most importantly makes life look different. I never knew someone could have this much impact on me but for 2 years we've met everything is just better man
+
+Im sorry for hurting you whenever i did and i promise ill makeup for everything 
 
 Forever yours,
 Ayandu ❤️`;
 
+/* ✨ TYPEWRITER */
 function typeWriter() {
 let i = 0;
 let el = document.getElementById("typing");
@@ -183,7 +206,7 @@ setTimeout(step, 18);
 step();
 }
 
-/* 🎁 open */
+/* 🎁 OPEN */
 document.getElementById("openBtn").onclick = function() {
 document.getElementById("intro").style.display = "none";
 document.getElementById("mainContent").style.display = "block";
@@ -195,12 +218,12 @@ music.play();
 typeWriter();
 };
 
-/* 💌 button */
+/* 💌 BUTTON */
 document.getElementById("playBtn").onclick = function() {
 document.getElementById("secret").style.display = "block";
 };
 
-/* 💖 hearts */
+/* 💖 FLOATING HEARTS */
 setInterval(()=>{
 let heart=document.createElement("div");
 heart.innerHTML="💖";
