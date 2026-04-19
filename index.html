@@ -12,6 +12,12 @@ background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffd1dc);
 overflow-x: hidden;
 }
 
+/* floating animation */
+@keyframes floatUp {
+0% {transform: translateY(0); opacity: 1;}
+100% {transform: translateY(-100vh); opacity: 0;}
+}
+
 .container {
 max-width: 850px;
 margin: 60px auto;
@@ -82,7 +88,8 @@ cursor:pointer;
 
 const message = `MY HZU,
 
-I cant imagine spending a single day without you...
+I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life, everything about you feels so unreal that sometimes i question that even if ur real or not, your love makes me feel the emotions i never knew existed...
+
 Forever yours,
 Ayandu ❤️`;
 
@@ -98,25 +105,31 @@ setTimeout(typeWriter,35);
 
 typeWriter();
 
-/* ✅ FINAL BUTTON FIX */
+/* button + music */
 document.getElementById("playBtn").addEventListener("click", function(){
-let music = document.getElementById("bgmusic");
-music.play();
+document.getElementById("bgmusic").play();
 document.getElementById("secret").style.display = "block";
 });
 
-/* hearts */
+/* 💖✨ hearts + glitter */
 setInterval(()=>{
-let heart=document.createElement("div");
-heart.innerHTML="❤️";
-heart.style.position="fixed";
-heart.style.left=Math.random()*100+"vw";
-heart.style.bottom="0";
-heart.style.fontSize="20px";
-document.body.appendChild(heart);
+let el = document.createElement("div");
 
-setTimeout(()=>heart.remove(),4000);
-},500);
+let shapes = ["💖","💗","💘","✨"];
+el.innerHTML = shapes[Math.floor(Math.random()*shapes.length)];
+
+el.style.position = "fixed";
+el.style.left = Math.random()*100 + "vw";
+el.style.bottom = "0";
+el.style.fontSize = (Math.random()*15 + 15) + "px";
+el.style.opacity = Math.random();
+el.style.animation = "floatUp 5s linear forwards";
+
+document.body.appendChild(el);
+
+setTimeout(()=>el.remove(),5000);
+
+},300);
 
 </script>
 
