@@ -52,7 +52,7 @@ text-align:center;
 background:rgba(255,255,255,0.3);
 border-radius:25px;
 backdrop-filter: blur(10px);
-display:none; /* hidden initially */
+display:none;
 }
 
 h1 { color:#ff3d6e; }
@@ -131,7 +131,7 @@ margin-top:15px;
 
 window.onload = function() {
 
-/* 💌 FULL MESSAGE */
+/* 💌 MESSAGE */
 const message = `MY HZU,
 
 I cant imagine spending a single day without you, ik we have our ups and downs but ever since we've met i love life, everything about you feels so unreal that sometimes i question that even if ur real or not, your love makes me feel the emotions i never knew existed, ik we both are very short tempered have flaws but the way we always try n make it up n all is obv that we are meant to be together, I promise ill be the best bf now and will act just as how you like, will never give u a chance to complain and be bad at me bs daikho aap ab
@@ -164,10 +164,10 @@ document.getElementById("openBtn").onclick = function() {
 document.getElementById("intro").style.display = "none";
 document.getElementById("mainContent").style.display = "block";
 
-/* play music */
-document.getElementById("bgmusic").play();
+let music = document.getElementById("bgmusic");
+music.volume = 0.5; /* 🔥 50% volume */
+music.play();
 
-/* start typing */
 typeWriter();
 };
 
