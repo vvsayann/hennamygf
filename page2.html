@@ -27,9 +27,7 @@ max-width:400px;
 }
 .glow{
 color:#ff3d6e;
-text-shadow:
-0 0 10px #ff4d6d,
-0 0 20px #ff4d6d;
+text-shadow:0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
 }
 button{
 margin-top:15px;
@@ -47,6 +45,7 @@ display:none;
 </style>
 </head>
 <body>
+
 <audio id="bgmusic" loop>
 <source src="song.mp3" type="audio/mp3">
 </audio>
@@ -59,8 +58,8 @@ display:none;
 </div>
 
 <div class="box" id="nextSection">
-<h2 class="glow">Ready for the next surprise? 💖</h2>
-<button onclick="goToQuiz()">Go 💌</button>
+<h2 class="glow">Something special for you 💖</h2>
+<p>I WILL ALWAYS BE URS ❤️</p>
 </div>
 
 <script>
@@ -79,15 +78,26 @@ musicBtn.innerText = "Play Music 🎵";
 }
 
 function nextPage(){
-document.getElementById("mainBox").style.display = "none";
-document.getElementById("nextSection").style.display = "block";
-}
+mainBox.style.display="none";
+nextSection.style.display="block";
 
-function goToQuiz(){
-document.getElementById("nextSection").innerHTML = `
-<h2 class="glow">Quiz coming next 👀</h2>
-<p>Get ready... 💖</p>
-`;
+/* final heart explosion */
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.innerHTML="💖";
+h.style.position="fixed";
+h.style.left=Math.random()*100+"vw";
+h.style.top=Math.random()*100+"vh";
+h.style.transition="1.5s";
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.style.transform="translateY(-80px)";
+h.style.opacity="0";
+},10);
+
+setTimeout(()=>h.remove(),1500);
+}
 }
 
 document.addEventListener("mousemove",function(e){
@@ -99,12 +109,15 @@ heart.style.top=e.clientY+"px";
 heart.style.pointerEvents="none";
 heart.style.transition="0.6s";
 document.body.appendChild(heart);
+
 setTimeout(()=>{
 heart.style.transform="translateY(-20px)";
 heart.style.opacity="0";
 },10);
+
 setTimeout(()=>heart.remove(),600);
 });
 </script>
+
 </body>
 </html>
